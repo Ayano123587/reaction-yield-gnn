@@ -27,6 +27,15 @@
       "embedded_pngs": 2,
       "executed": true,
       "executed_file_sha256": "4f0c47308e06ea946663e6ed978be3bfe544ca2246a568bf2e274b59c51772a0"
+    },
+    {
+      "path": "notebooks/04_checkpoint_deployment_and_transfer_limits.ipynb",
+      "sha256": "874862c7d6d1969deac6a06eb22d60cbff7081c491cfee1f645578ad70df4531",
+      "executed_file_sha256": "991b7576a1df7c06363796c61a720e45e5cbb2008f16d1ff750cd45773f87350",
+      "code_cells": 6,
+      "code_lines": 125,
+      "embedded_pngs": 2,
+      "executed": true
     }
   ],
   "figures": [
@@ -59,6 +68,18 @@
       "sha256": "5efdd24cfcf6ee5d0648650b6951b026643a28c4c39ee68460df6a6e9edfef2a",
       "width": 1805,
       "height": 543
+    },
+    {
+      "path": "docs/figures/reaction_deployment_graph_sizes.png",
+      "sha256": "555774f7cd7802cba85639bee53747e174cda54bea7c593650c23c9b0fcf451b",
+      "width": 1800,
+      "height": 525
+    },
+    {
+      "path": "docs/figures/reaction_transfer_variance_diagnostic.png",
+      "sha256": "780b150bb929215cf34aaea104a8a93a54f8bcc084ef07703def4ec7bd38647a",
+      "width": 1500,
+      "height": 570
     }
   ],
   "schema_and_plain_python_compilation": "passed",

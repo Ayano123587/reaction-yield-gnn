@@ -30,6 +30,7 @@ Launch `python -m jupyter lab` from the activated environment.
 - [Real ORD inputs and EDA](notebooks/01_real_ord_inputs_and_eda.ipynb)
 - [Main graph model and training](notebooks/02_main_graph_model_and_training.ipynb): visible features, GINE pooling/training loop and actual training curves.
 - [Evaluation and domain transfer](notebooks/03_evaluation_and_domain_transfer.ipynb)
+- [Checkpoint deployment and transfer limits](notebooks/04_checkpoint_deployment_and_transfer_limits.ipynb): actual development replay, input contracts and target-spread diagnostics.
 
 Three development rounds tested quantities, molecular fingerprints and robust graph losses. None met the fixed **0.5-point/two-fold-win** replacement gate. The retained GNN's retrospective ELN MAE is **24.642 percentage points**, versus forest **23.864**. On 2,048 hash-selected independent-source HTE reactions, GNN MAE is **23.591**, but R² is **−18.145**: broad chemistry generalization is not established.
 
