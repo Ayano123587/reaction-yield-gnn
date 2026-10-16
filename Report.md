@@ -6,7 +6,7 @@ The model estimates percentage yield from input molecular graphs, reaction roles
 
 The complete named AstraZeneca ORD ELN source has 750 records. Six ambiguous desired-product yields and four nonfinite temperatures leave 740 accepted reactions. A principal-reactant-scaffold split reserves 130 records for evaluation. All 610 development records enter three grouped validation folds. The final model trains on those 610 records for the validation-selected 47 epochs.
 
-Grouped validation MAE is **23.5668 percentage points**, compared with **24.9940** for the matched fingerprint forest. Replacement requires at least 0.5-point mean improvement and wins on two of three folds. Controlled representation, robust-loss, seed-ensemble and descriptor checks did not meet that gate. [Selection verification](docs/selection-check.json) records the compact integrity check; no held-out score selected a candidate.
+Grouped validation MAE is **23.5668 percentage points**, compared with **24.9940** for the matched fingerprint forest. Replacement requires at least 0.5-point mean improvement and wins on two of three folds. [Selection verification](docs/selection-check.json) records the configuration and integrity checks; no held-out score selects a candidate.
 
 ## Results
 
