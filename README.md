@@ -34,6 +34,6 @@ Launch `python -m jupyter lab` from the activated environment.
 
 The retained GNN's retrospective ELN MAE is **24.642 percentage points**, versus forest **23.864**. On all **50,668 valid reactions** from the 50,688-row independent HTE source, GNN MAE is **23.637**, but R^2 is **-17.510**: broad chemistry generalization is not established.
 
-See [Report.md](Report.md), [validation selection](docs/experiments.md), [dataset provenance](docs/dataset-provenance.json) and [ORD license](docs/ORD-LICENSE.txt). The 740-row ELN cohort is small; grouping uses the principal reactant scaffold. The separate HTE source is narrow assay chemistry, with scaffold overlap. Products, measured outcomes, notes and source identifiers never enter predictors. No synthetic benchmark score is claimed. Data, row predictions, weights and secrets stay ignored.
+See [Report.md](Report.md), [validation selection](Report.md#data-and-selection), [dataset provenance](docs/dataset-provenance.json) and [ORD license](docs/ORD-LICENSE.txt). The 740-row ELN cohort is small; grouping uses the principal reactant scaffold. The separate HTE source is narrow assay chemistry, with scaffold overlap. Products, measured outcomes, notes and source identifiers never enter predictors. Data, row predictions, weights and secrets stay ignored.
 
 ![Recorded aggregate result](docs/figures/reaction_observed_eln_errors.png)
