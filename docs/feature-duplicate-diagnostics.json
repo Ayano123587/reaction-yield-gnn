@@ -1,0 +1,20 @@
+{
+  "train": {
+    "rows": 563,
+    "unique_canonical_input_temperature_signatures": 444,
+    "repeated_signature_groups": 71,
+    "duplicate_rows_beyond_first": 119
+  },
+  "validation": {
+    "rows": 47,
+    "unique_canonical_input_temperature_signatures": 41,
+    "repeated_signature_groups": 5,
+    "duplicate_rows_beyond_first": 6
+  },
+  "test": {
+    "rows": 130,
+    "unique_canonical_input_temperature_signatures": 108,
+    "repeated_signature_groups": 16,
+    "duplicate_rows_beyond_first": 22
+  }
+}

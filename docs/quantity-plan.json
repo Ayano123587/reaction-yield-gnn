@@ -1,0 +1,59 @@
+{
+  "study": "quantity-aware-eln-v2",
+  "raw_eln_sha256": "bf1686ca6edac300a61acb5a5ee006ab5fd61007962ae19062b3d3c7879f84a9",
+  "original_processed_sha256": "cff11c38744ec83ef635d21464e6316690d59468ad823d234db7dbda54363eb0",
+  "hypothesis": "All 4489 reported ELN input components have amounts, omitted by the old model. Unit-safe pre-reaction stoichiometry/concentration and molecule-before-role pooling may improve scaffold-disjoint yield MAE; robust Huber loss may better match the MAE objective.",
+  "feature_allowlist": "Only existing molecular inputs/roles, temperature setpoint, reported input moles/volumes and is_limiting. No outcomes, product graphs, yield/analysis fields, notes, times, source IDs or procedure text enter predictors.",
+  "units": "Convert mol/mmol/umol/nmol to moles and L/mL/uL/nL to liters. Unknown units and mass-only amounts are missing, not inferred. Reject negative/nonfinite values. Reference is smallest positive explicitly limiting reactant moles, else smallest positive reactant moles.",
+  "node_feature_version": 2,
+  "node_dimensions": 13,
+  "condition_dimensions": 16,
+  "component_pooling": "GINE on disjoint molecular graphs, mean atoms into components, then mean component embeddings by reaction role; explicit component counts retained.",
+  "configs": [
+    {
+      "name": "legacy_role48",
+      "feature_version": 1,
+      "pooling": "role",
+      "loss": "mse"
+    },
+    {
+      "name": "quantity_atom_role48",
+      "feature_version": 2,
+      "pooling": "atom_role",
+      "loss": "mse"
+    },
+    {
+      "name": "quantity_component_role48",
+      "feature_version": 2,
+      "pooling": "component_role",
+      "loss": "mse"
+    },
+    {
+      "name": "quantity_component_huber48",
+      "feature_version": 2,
+      "pooling": "component_role",
+      "loss": "huber",
+      "beta": 0.1
+    }
+  ],
+  "fixed_training": {
+    "hidden": 48,
+    "layers": 3,
+    "lr": 0.003,
+    "weight_decay": 0.0001,
+    "dropout": 0.0,
+    "batch_size": 24,
+    "max_epochs": 120,
+    "minimum_epochs": 20,
+    "early_stopping_patience": 20,
+    "seeds": "42+fold for fitting;42 for final refit",
+    "threads": 2,
+    "device": "cpu"
+  },
+  "split": "Preserve all 740 existing valid rows and source groups; original 610-row development/130-row historically observed ELN test. Three same principal-scaffold-disjoint development folds as old optimize. Assert source IDs/groups/signatures unchanged.",
+  "gnn_adoption": "New architecture must improve mean 3-fold validation MAE by at least 0.5 percentage points and beat legacy on >=2/3 folds; otherwise retain legacy procedure. Among eligible choose lowest mean MAE, ties prefer declared order. Refit median best epoch count.",
+  "baselines": "Per-fold training median; original role fingerprint RandomForest200 leaf1/3/8; quantities-augmented role fingerprints with RandomForest400 or ExtraTrees400 leaf1/3/8. Tree selection is validation only and separately reported.",
+  "evaluation": "Training command performs development validation only. Freeze selection before explicit evaluation/refit and one descriptive already-observed ELN test comparison. 50688-row HTE source remains untouched for label-based adaptation/selection; evaluate deterministic identifier-hash sample2048 once after final model freeze, excluding exact ELN input clones.",
+  "disclosure": "ELN test and earlier aggregate results already observed. No fresh ELN generalization claim. HTE source uses assay yields and narrow two-amine/four-aryl design, so cross-source results do not establish broad chemistry or comparable isolated-yield accuracy.",
+  "reporting": "Root train.py, explicit evaluation_scripts, Report.md baseline-versus-selected table, module implementations, EDA-only notebooks, logs/aggregate configs committed. Raw/processed data, row predictions, full queue records, and weights ignored."
+}

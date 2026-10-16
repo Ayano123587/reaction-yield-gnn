@@ -1,0 +1,45 @@
+{
+  "study": "role-morgan-v3",
+  "hypothesis": "The old forest compresses each molecular role into 256 RDKFingerprint bits. Larger radius-2 Morgan fingerprints may reduce collisions and preserve local reaction-center chemistry better; reported amount conditions remain unchanged. Compare the graph learner honestly against this stronger learned comparator.",
+  "prerequisite": "Finish and freeze quantity-v2 selection before scoring this followup. No ELN or HTE outcomes examined.",
+  "representation": "Four role-specific OR-combined 1024-bit radius-2 Morgan binary fingerprints plus unchanged 16 quantity conditions; no products or outcome-derived features.",
+  "candidates": [
+    {
+      "kind": "forest",
+      "leaf": 3,
+      "trees": 400,
+      "feature_version": 2,
+      "fingerprint": "morgan1024",
+      "name": "forest_morgan1024_leaf3"
+    },
+    {
+      "kind": "forest",
+      "leaf": 8,
+      "trees": 400,
+      "feature_version": 2,
+      "fingerprint": "morgan1024",
+      "name": "forest_morgan1024_leaf8"
+    },
+    {
+      "kind": "extra",
+      "leaf": 3,
+      "trees": 400,
+      "feature_version": 2,
+      "fingerprint": "morgan1024",
+      "name": "extra_morgan1024_leaf3"
+    },
+    {
+      "kind": "extra",
+      "leaf": 8,
+      "trees": 400,
+      "feature_version": 2,
+      "fingerprint": "morgan1024",
+      "name": "extra_morgan1024_leaf8"
+    }
+  ],
+  "split": "Exactly same frozen three scaffold-grouped development folds and 610 reactions; test remains historically observed and unused for selection.",
+  "adoption": "Retain quantity-v2 selected forest unless new candidate improves mean fold MAE by >=0.5 percentage points and wins >=2/3 matched folds. Select lowest eligible mean MAE; retain GNN selection unchanged.",
+  "seed": 42,
+  "threads": 2,
+  "limits": "One fixed four-candidate representation comparison, no adaptive expansion or test-guided weights. Independent HTE evaluation only after combined procedure frozen."
+}

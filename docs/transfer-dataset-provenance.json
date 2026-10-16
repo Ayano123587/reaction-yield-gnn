@@ -1,0 +1,15 @@
+{
+  "dataset_id": "ord_dataset-805ad863feef48579d95d86a728035f4",
+  "github_revision": "83f971f586f6ad18f358ae4ae99d045e94ed2066",
+  "sha256": "31b7c4762145e5dad973050373cd967bdd85caf3a9858767c83a17fed6c4af36",
+  "bytes": 5088296,
+  "rows": 50688,
+  "upstream_metadata": {
+    "ord.schema_version": "1",
+    "ord.name": "High-throughput exploration of 50,688 Pd-, Ni- and Cu-catalysed C\u2013N coupling reactions",
+    "ord.description": "50,688 C\u2013N coupling reactions between 2 amines and 4 aryl halides were studied in a series of ultra-HTE screens using a 1536-well plate format. Catalyst (33 unique), ligand (164 unique), base (17 unique) and temperature were varied across Pd, Ni and Cu catalytic systems in diglyme, DMSO, and binary solvent mixtures. Assay yields were determined by UPLC-MS. Reactions were performed by the Cernak group at the University of Michigan, Ann Arbor, MI, and the publication is available at https://doi.org/10.1021/jacs.6c05959.",
+    "ord.dataset_id": "ord_dataset-805ad863feef48579d95d86a728035f4"
+  },
+  "license": "CC-BY-SA-4.0",
+  "role": "Independent-source transfer evaluation only, not training augmentation"
+}

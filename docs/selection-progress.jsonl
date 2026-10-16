@@ -1,0 +1,12 @@
+{"config": "global48", "fold": 0, "validation_mae": 24.282041852672894, "best_epoch": 44, "executed_epochs": 54}
+{"config": "global48", "fold": 1, "validation_mae": 23.61025778886651, "best_epoch": 2, "executed_epochs": 20}
+{"config": "global48", "fold": 2, "validation_mae": 23.89929957641904, "best_epoch": 40, "executed_epochs": 50}
+{"config": "role48", "fold": 0, "validation_mae": 23.863116455349054, "best_epoch": 43, "executed_epochs": 53}
+{"config": "role48", "fold": 1, "validation_mae": 23.673594393650024, "best_epoch": 1, "executed_epochs": 20}
+{"config": "role48", "fold": 2, "validation_mae": 23.934957669169894, "best_epoch": 20, "executed_epochs": 30}
+{"config": "role96", "fold": 0, "validation_mae": 24.025866334637005, "best_epoch": 32, "executed_epochs": 42}
+{"config": "role96", "fold": 1, "validation_mae": 24.21462002020924, "best_epoch": 1, "executed_epochs": 20}
+{"config": "role96", "fold": 2, "validation_mae": 23.585890644972544, "best_epoch": 18, "executed_epochs": 28}
+{"config": "role48_fast", "fold": 0, "validation_mae": 23.71997783716881, "best_epoch": 43, "executed_epochs": 53}
+{"config": "role48_fast", "fold": 1, "validation_mae": 24.182208220497902, "best_epoch": 4, "executed_epochs": 20}
+{"config": "role48_fast", "fold": 2, "validation_mae": 22.928919163044327, "best_epoch": 47, "executed_epochs": 57}

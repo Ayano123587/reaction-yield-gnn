@@ -1,0 +1,352 @@
+{
+  "dataset_id": "ord_dataset-00005539a1e04c809a9a78647bea649c",
+  "processed_sha256": "cff11c38744ec83ef635d21464e6316690d59468ad823d234db7dbda54363eb0",
+  "code_revision": "a9bc042f03de7f8b3c4a5e57d9907be6a1924370",
+  "seed": 42,
+  "protocol": "No final-test predictions during model/config selection. An earlier2epoch exploratory smoke did report aggregate test metrics; this historical exposure is disclosed.",
+  "selection": "3fold principal-substrate-scaffold-disjoint validation; fixed final test; refit all development rows with median validation best epoch",
+  "split_integrity": {
+    "scaffold_overlap": 0,
+    "exact_input_clone_overlap": 0
+  },
+  "development_rows": 610,
+  "final_test_rows": 130,
+  "gnn_trials": [
+    {
+      "config": {
+        "name": "global48",
+        "hidden": 48,
+        "layers": 3,
+        "pooling": "global",
+        "dropout": 0.0,
+        "lr": 0.001
+      },
+      "fold_validation_mae": [
+        24.282041852672894,
+        23.61025778886651,
+        23.89929957641904
+      ],
+      "mean_validation_mae": 23.93053307265281,
+      "best_epochs": [
+        44,
+        2,
+        40
+      ]
+    },
+    {
+      "config": {
+        "name": "role48",
+        "hidden": 48,
+        "layers": 3,
+        "pooling": "role",
+        "dropout": 0.0,
+        "lr": 0.001
+      },
+      "fold_validation_mae": [
+        23.863116455349054,
+        23.673594393650024,
+        23.934957669169894
+      ],
+      "mean_validation_mae": 23.82388950605632,
+      "best_epochs": [
+        43,
+        1,
+        20
+      ]
+    },
+    {
+      "config": {
+        "name": "role96",
+        "hidden": 96,
+        "layers": 3,
+        "pooling": "role",
+        "dropout": 0.0,
+        "lr": 0.001
+      },
+      "fold_validation_mae": [
+        24.025866334637005,
+        24.21462002020924,
+        23.585890644972544
+      ],
+      "mean_validation_mae": 23.942125666606263,
+      "best_epochs": [
+        32,
+        1,
+        18
+      ]
+    },
+    {
+      "config": {
+        "name": "role48_fast",
+        "hidden": 48,
+        "layers": 3,
+        "pooling": "role",
+        "dropout": 0.0,
+        "lr": 0.003
+      },
+      "fold_validation_mae": [
+        23.71997783716881,
+        24.182208220497902,
+        22.928919163044327
+      ],
+      "mean_validation_mae": 23.610368406903678,
+      "best_epochs": [
+        43,
+        4,
+        47
+      ]
+    }
+  ],
+  "forest_trials": [
+    {
+      "min_samples_leaf": 1,
+      "fold_validation_mae": [
+        25.464728204405127,
+        26.29871805470279,
+        26.800741643697403
+      ],
+      "mean_validation_mae": 26.188062634268437
+    },
+    {
+      "min_samples_leaf": 3,
+      "fold_validation_mae": [
+        24.752598660555055,
+        26.714767775564315,
+        24.683859597219527
+      ],
+      "mean_validation_mae": 25.383742011112968
+    },
+    {
+      "min_samples_leaf": 8,
+      "fold_validation_mae": [
+        24.771633997494796,
+        26.342378151607512,
+        23.86798117875452
+      ],
+      "mean_validation_mae": 24.993997775952277
+    }
+  ],
+  "selected_gnn": {
+    "name": "role48_fast",
+    "hidden": 48,
+    "layers": 3,
+    "pooling": "role",
+    "dropout": 0.0,
+    "lr": 0.003
+  },
+  "selected_forest": {
+    "min_samples_leaf": 8,
+    "fold_validation_mae": [
+      24.771633997494796,
+      26.342378151607512,
+      23.86798117875452
+    ],
+    "mean_validation_mae": 24.993997775952277
+  },
+  "final_refit_epochs": 43,
+  "final_refit_history": [
+    {
+      "epoch": 1,
+      "train_mse_fraction": 0.08592082533191463
+    },
+    {
+      "epoch": 2,
+      "train_mse_fraction": 0.08239745360906006
+    },
+    {
+      "epoch": 3,
+      "train_mse_fraction": 0.08086826664502503
+    },
+    {
+      "epoch": 4,
+      "train_mse_fraction": 0.07987654216465402
+    },
+    {
+      "epoch": 5,
+      "train_mse_fraction": 0.07888783521828104
+    },
+    {
+      "epoch": 6,
+      "train_mse_fraction": 0.07964431614172263
+    },
+    {
+      "epoch": 7,
+      "train_mse_fraction": 0.07790713053746301
+    },
+    {
+      "epoch": 8,
+      "train_mse_fraction": 0.07693985854504538
+    },
+    {
+      "epoch": 9,
+      "train_mse_fraction": 0.07720492393022678
+    },
+    {
+      "epoch": 10,
+      "train_mse_fraction": 0.07635686891000779
+    },
+    {
+      "epoch": 11,
+      "train_mse_fraction": 0.0755936331192001
+    },
+    {
+      "epoch": 12,
+      "train_mse_fraction": 0.07655363849929121
+    },
+    {
+      "epoch": 13,
+      "train_mse_fraction": 0.07535468046782447
+    },
+    {
+      "epoch": 14,
+      "train_mse_fraction": 0.0743273113106118
+    },
+    {
+      "epoch": 15,
+      "train_mse_fraction": 0.0751557007065562
+    },
+    {
+      "epoch": 16,
+      "train_mse_fraction": 0.07398896898891105
+    },
+    {
+      "epoch": 17,
+      "train_mse_fraction": 0.0728983391015256
+    },
+    {
+      "epoch": 18,
+      "train_mse_fraction": 0.07221287336261546
+    },
+    {
+      "epoch": 19,
+      "train_mse_fraction": 0.07401221575307064
+    },
+    {
+      "epoch": 20,
+      "train_mse_fraction": 0.07300437393247104
+    },
+    {
+      "epoch": 21,
+      "train_mse_fraction": 0.07199877070598915
+    },
+    {
+      "epoch": 22,
+      "train_mse_fraction": 0.07172275630177044
+    },
+    {
+      "epoch": 23,
+      "train_mse_fraction": 0.07046436114145108
+    },
+    {
+      "epoch": 24,
+      "train_mse_fraction": 0.07049729358710226
+    },
+    {
+      "epoch": 25,
+      "train_mse_fraction": 0.0719928583405057
+    },
+    {
+      "epoch": 26,
+      "train_mse_fraction": 0.07104422888550602
+    },
+    {
+      "epoch": 27,
+      "train_mse_fraction": 0.07187572819043378
+    },
+    {
+      "epoch": 28,
+      "train_mse_fraction": 0.07066883948005613
+    },
+    {
+      "epoch": 29,
+      "train_mse_fraction": 0.07203276023024419
+    },
+    {
+      "epoch": 30,
+      "train_mse_fraction": 0.07092926819793513
+    },
+    {
+      "epoch": 31,
+      "train_mse_fraction": 0.0713594845572456
+    },
+    {
+      "epoch": 32,
+      "train_mse_fraction": 0.07081491092189414
+    },
+    {
+      "epoch": 33,
+      "train_mse_fraction": 0.07092485256859514
+    },
+    {
+      "epoch": 34,
+      "train_mse_fraction": 0.07069246781165482
+    },
+    {
+      "epoch": 35,
+      "train_mse_fraction": 0.06989867565084676
+    },
+    {
+      "epoch": 36,
+      "train_mse_fraction": 0.06958026934842594
+    },
+    {
+      "epoch": 37,
+      "train_mse_fraction": 0.06876887437261518
+    },
+    {
+      "epoch": 38,
+      "train_mse_fraction": 0.06882571889484515
+    },
+    {
+      "epoch": 39,
+      "train_mse_fraction": 0.06962453523864512
+    },
+    {
+      "epoch": 40,
+      "train_mse_fraction": 0.06851373621430554
+    },
+    {
+      "epoch": 41,
+      "train_mse_fraction": 0.06879891880223009
+    },
+    {
+      "epoch": 42,
+      "train_mse_fraction": 0.06855195043761222
+    },
+    {
+      "epoch": 43,
+      "train_mse_fraction": 0.0679875340984493
+    }
+  ],
+  "test_gnn": {
+    "mae_percentage_points": 25.202886020220244,
+    "rmse_percentage_points": 30.03680029972111,
+    "r2": -0.02436156265050271,
+    "rows": 130
+  },
+  "test_training_median": {
+    "mae_percentage_points": 25.622923022050124,
+    "rmse_percentage_points": 29.88728203969184,
+    "r2": -0.014188737821624553,
+    "rows": 130
+  },
+  "test_role_fingerprint_random_forest": {
+    "mae_percentage_points": 23.864459027190627,
+    "rmse_percentage_points": 28.98783520198099,
+    "r2": 0.045936003915797996,
+    "rows": 130
+  },
+  "runtime_seconds": 624.7078075000027,
+  "environment": {
+    "python": "3.14.2",
+    "torch": "2.14.0+cpu",
+    "device": "cpu",
+    "threads": 2
+  },
+  "limitations": [
+    "Earlier exploratory smoke already exposed an aggregate on this test; final selection used validation only, but a genuinely untouched external source evaluation is still needed.",
+    "740 usable ELN reactions from one source; this is not a universal reaction predictor.",
+    "Largest-reactant scaffolds and exact input clones are disjoint; smaller substrates and reagents can overlap.",
+    "Mean3fold validation is noisy and no best-achievable-global-score claim is made."
+  ]
+}

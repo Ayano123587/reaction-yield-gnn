@@ -1,0 +1,8 @@
+torch>=2.6,<3
+torch-geometric>=2.6,<3
+rdkit>=2025.3
+ord-schema==0.9.3
+pyarrow>=18
+numpy>=2,<3
+pytest>=8,<10
+scikit-learn>=1.7,<2

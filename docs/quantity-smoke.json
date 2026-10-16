@@ -1,0 +1,26 @@
+{
+  "scope": "mechanics-only; not a benchmark or final selection",
+  "real_training_rows": 96,
+  "real_validation_rows": 32,
+  "epochs": 2,
+  "checkpoint_sha256": "ec3491886137953fb9d9fde1f920eb31f80fcb346141b523367d906f82dbe50c",
+  "checkpoint_delta": 0.0,
+  "processed_sha256": "111883fb23471799211848402f88abde643d688586ed295e7f468061dbdae766",
+  "test_evaluated": false,
+  "command": "python -m reaction_gnn.quantity_study smoke",
+  "preregistered_commit": "28fa125",
+  "tests": "21 passed; existing working environment",
+  "environment": {
+    "python": "3.14.2",
+    "packages": {
+      "torch": "2.14.0+cpu",
+      "torch-geometric": "2.8.1",
+      "rdkit": "2026.3.6",
+      "numpy": "2.4.2",
+      "scikit-learn": "1.8.0",
+      "ord-schema": "0.9.3",
+      "pyarrow": "25.0.1"
+    }
+  },
+  "failed_environment_attempt": "New isolated venv installed, but Windows Application Control rejected RDKit DLL imports; no policy bypass or security change."
+}

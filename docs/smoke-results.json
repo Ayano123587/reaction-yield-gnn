@@ -1,0 +1,75 @@
+{
+  "dataset_id": "ord_dataset-00005539a1e04c809a9a78647bea649c",
+  "processed_sha256": "cff11c38744ec83ef635d21464e6316690d59468ad823d234db7dbda54363eb0",
+  "seed": 42,
+  "epochs": 2,
+  "best_epoch_selected_on_validation": 1,
+  "feature_contract": "input molecular SMILES/roles and temperature setpoint only",
+  "split_rule": "largest-reactant Murcko scaffold; acyclic fallback canonical SMILES; group-heldout 70/15/15 by group count",
+  "splits": {
+    "train": {
+      "rows": 563,
+      "scaffold_groups": 90,
+      "yield_mean": 37.140692655612476,
+      "yield_std": 28.867751213875813
+    },
+    "validation": {
+      "rows": 47,
+      "scaffold_groups": 19,
+      "yield_mean": 45.894255204403656,
+      "yield_std": 25.803571802841944
+    },
+    "test": {
+      "rows": 130,
+      "scaffold_groups": 20,
+      "yield_mean": 40.76507682066698,
+      "yield_std": 29.677480626825616
+    }
+  },
+  "test_gnn": {
+    "mae_percentage_points": 25.481741369687594,
+    "rmse_percentage_points": 29.81193475156054,
+    "r2": -0.009081545654918255,
+    "rows": 130
+  },
+  "test_training_median": {
+    "mae_percentage_points": 25.86876922754141,
+    "rmse_percentage_points": 30.075226288658847,
+    "r2": -0.02698416449850316,
+    "rows": 130
+  },
+  "test_role_fingerprint_random_forest": {
+    "mae_percentage_points": 23.830578745315645,
+    "rmse_percentage_points": 29.265634040358595,
+    "r2": 0.027562238823569007,
+    "rows": 130
+  },
+  "history": [
+    {
+      "epoch": 1,
+      "train_mse_fraction": 0.09238403358002116,
+      "validation_mae_percentage_points": 23.218882385720597
+    },
+    {
+      "epoch": 2,
+      "train_mse_fraction": 0.08373330144433315,
+      "validation_mae_percentage_points": 23.47077398858172
+    }
+  ],
+  "environment": {
+    "python": "3.14.2",
+    "torch": "2.14.0+cpu",
+    "device": "cpu",
+    "threads": 2
+  },
+  "code_revision": "1e4d5a3469e507fe2ff7dc19fbcf06d66da2559d",
+  "code_dirty_at_run": false,
+  "runtime_seconds": 8.622491899994202,
+  "limitations": [
+    "Single 750-row ELN source; no independent laboratory or prospective validation.",
+    "Grouping protects largest-reactant scaffolds only; smaller reactants/reagents may overlap.",
+    "No product structures, notes, analytical outcomes, yield measurements or outcome reaction time enter model features.",
+    "Input quantities and detailed procedures are omitted; conditions include only temperature setpoint.",
+    "A measured model is not necessarily better than tabular or constant baselines."
+  ]
+}

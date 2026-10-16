@@ -1,0 +1,10 @@
+{
+  "records": 740,
+  "raw_rows": 750,
+  "dropped": {
+    "Need one unambiguous desired-product percentage yield in [0,100]": 6,
+    "Nonfinite temperature": 4
+  },
+  "processed_sha256": "111883fb23471799211848402f88abde643d688586ed295e7f468061dbdae766",
+  "source_ids_groups_signatures_unchanged": true
+}

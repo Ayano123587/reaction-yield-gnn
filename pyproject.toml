@@ -1,0 +1,18 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+[project]
+name = "reaction-yield-gnn"
+version = "0.1.0"
+description = "Input-only graph regression on source-traceable ORD reaction yields"
+requires-python = ">=3.11"
+dependencies = ["torch>=2.6,<3", "torch-geometric>=2.6,<3", "rdkit>=2025.3", "ord-schema==0.9.3", "pyarrow>=18", "numpy>=2,<3", "scikit-learn>=1.7,<2"]
+[project.optional-dependencies]
+dev = ["pytest>=8,<10"]
+[project.scripts]
+reaction-gnn = "reaction_gnn.cli:main"
+[tool.setuptools.packages.find]
+where = ["src"]
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]

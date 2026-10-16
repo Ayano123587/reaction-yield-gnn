@@ -1,0 +1,8 @@
+{
+  "dataset_id": "ord_dataset-00005539a1e04c809a9a78647bea649c",
+  "github_revision": "83f971f586f6ad18f358ae4ae99d045e94ed2066",
+  "sha256": "bf1686ca6edac300a61acb5a5ee006ab5fd61007962ae19062b3d3c7879f84a9",
+  "bytes": 274285,
+  "url": "https://huggingface.co/datasets/open-reaction-database/ord-data/resolve/main/data/00/ord_dataset-00005539a1e04c809a9a78647bea649c.parquet",
+  "license": "CC-BY-SA-4.0 dataset; upstream ord-data code Apache-2.0"
+}
