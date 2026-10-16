@@ -1,0 +1,36 @@
+{
+  "processed_sha256": "111883fb23471799211848402f88abde643d688586ed295e7f468061dbdae766",
+  "gnn": {
+    "name": "legacy_role48",
+    "feature_version": 1,
+    "pooling": "role",
+    "loss": "mse"
+  },
+  "forest": {
+    "name": "forest_1_leaf8",
+    "kind": "forest",
+    "feature_version": 1,
+    "leaf": 8,
+    "trees": 200
+  },
+  "epochs": 47,
+  "training": {
+    "hidden": 48,
+    "layers": 3,
+    "lr": 0.003,
+    "weight_decay": 0.0001,
+    "dropout": 0.0,
+    "batch_size": 24,
+    "max_epochs": 120,
+    "minimum_epochs": 20,
+    "early_stopping_patience": 20,
+    "seeds": "42+fold for fitting;42 for final refit",
+    "threads": 2,
+    "device": "cpu"
+  },
+  "split_seed": 42,
+  "selected_from_development_only": true,
+  "development_rows": 610,
+  "observed_eln_rows": 130,
+  "selection_sha256": "321f40d4da48b1ce04c12225fac3b213fe71c3ee8b020cc8cc67a10a7edb80c2"
+}

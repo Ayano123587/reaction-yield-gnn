@@ -1,0 +1,58 @@
+{
+  "selected": "legacy_role48",
+  "development_rows": 610,
+  "grouped_folds": 3,
+  "adoption_gate": {
+    "minimum_mean_mae_gain_pp": 0.5,
+    "minimum_fold_wins": 2
+  },
+  "baseline_mae_pp": 23.566776075518305,
+  "checks": [
+    {
+      "name": "equal_seed_ensemble",
+      "mean_mae_pp": 23.347622416160757,
+      "adopted": false
+    },
+    {
+      "name": "capacity_control",
+      "fold_mae": [
+        23.81614292706504,
+        24.566278913441828,
+        23.33438212125837
+      ],
+      "mean_mae": 23.905601320588413,
+      "gain_pp": -0.33882524507010814,
+      "fold_wins": 0,
+      "eligible": false
+    },
+    {
+      "name": "graph_chemical_descriptors",
+      "fold_mae": [
+        24.375390278119028,
+        25.212244533691084,
+        22.110907022285353
+      ],
+      "mean_mae": 23.899513944698487,
+      "gain_pp": -0.3327378691801819,
+      "fold_wins": 1,
+      "eligible": false
+    }
+  ],
+  "descriptor_runtime_seconds": 549.8813936239999,
+  "descriptor_aggregate_sha256": "e2664a6a912a3641f4e30710a0b56d421576567d999c2a25bb72c2f62be454a7",
+  "descriptor_source_commit": "fa251f7",
+  "descriptor_checkpoint_reload_max_delta_pp": 0,
+  "test_used_for_selection": false,
+  "candidate_checkpoint_sha256": {
+    "capacity_control-fold0.pt": "b96f93f06462f264a700ea6b0944ff72d26a4dab303d0d73a312bd55e88c3378",
+    "capacity_control-fold1.pt": "634c1f101ec32b655629f9728bc421a20e028ad8230faf57c09d924755e55777",
+    "capacity_control-fold2.pt": "07572f24af0e0e662d4f855c3399d6d2985659285e23b54186a7f809d5b05feb",
+    "graph_chemical_descriptors-fold0.pt": "4897e615c54337b4184e326c3778601299283f3431311247dd7f9254c2f530c2",
+    "graph_chemical_descriptors-fold1.pt": "36ac1f8bf08eb6a229a72ca2fc6815be1a4ebd350b93e14777ce8bdf5f06b88a",
+    "graph_chemical_descriptors-fold2.pt": "fccfc35a92f1b0dff16521f4d519e2730cd9b7ce32670ea789d1d04709fe4522"
+  },
+  "current_descriptor_source_sha256": {
+    "descriptor_model.py": "916d66c3968c5ddd5e509bf7b40df278f369a5a55b0b1e31e490cb4a2f342ff6",
+    "descriptor_study.py": "69caa5c2ec9dc7039cf18c1dcf415c02b2cdfca149c1e3b234fa2c39fdd21f05"
+  }
+}

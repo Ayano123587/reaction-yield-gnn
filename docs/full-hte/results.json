@@ -1,0 +1,72 @@
+{
+  "scope": "Full named ORD HTE source, frozen retained ELN GNN/forest; no training, tuning, model selection or adaptation.",
+  "test_exposure": "Full cohort includes previously observed lowest-SHA256 2048 source identifiers. Remaining records are newly evaluated, but no fully blind independent test claim. Old subset scores remain historical.",
+  "plan_sha256": "0d2b9d8e2c2ac4831cfb96f23616f996e79c4a018fcb7eef9d9e0d60013741bd",
+  "implementation_sha256": "a17e8c95aa99178673e74c0862808109f2c4f1bdd31e5e72159448e61baa03b5",
+  "resume_manifest": {
+    "source_sha256": "31b7c4762145e5dad973050373cd967bdd85caf3a9858767c83a17fed6c4af36",
+    "gnn_checkpoint_sha256": "a23bf986ffaa53d6003dd6648f98141b697438c790c9bb8ebc60adab50ec2e97",
+    "forest_checkpoint_sha256": "1e6c9d9c0f041ce8aa491f1f7ba6cec0e527b40c887ec66e7ee4d7fe23b0a00b",
+    "processed_eln_sha256": "111883fb23471799211848402f88abde643d688586ed295e7f468061dbdae766",
+    "prefix": {
+      "sha256": "ab23d9483f7bd1ce0079e8a5294a7c6234ea2ff7104cc73cbd5aad772bb10db4",
+      "rows": 30020,
+      "bytes": 3965850,
+      "captured_source_bytes": 3965850,
+      "partial_tail_bytes_excluded": 0
+    },
+    "plan_sha256": "0d2b9d8e2c2ac4831cfb96f23616f996e79c4a018fcb7eef9d9e0d60013741bd",
+    "original_implementation_sha256": "5262cc8d53b52940d292f9ea913cdb048a51868bbcd17366fd85ea236292ba26",
+    "original_compute": {
+      "torch": "2.14.0+cpu",
+      "device": "cpu",
+      "threads": 2
+    },
+    "transition": "Preserve complete host prediction prefix; cloud reparses source eligibility/targets/order then infers only remainder. Host suffix after snapshot is ignored, never scored twice."
+  },
+  "prefix_rows_reused_without_model_inference": 30020,
+  "source_sha256": "31b7c4762145e5dad973050373cd967bdd85caf3a9858767c83a17fed6c4af36",
+  "source_rows": 50688,
+  "retained_rows": 50668,
+  "dropped": {
+    "Need one unambiguous desired-product percentage yield in [0,100]": 20
+  },
+  "previously_observed_identifier_count": 2048,
+  "previously_observed_retained_rows": 2048,
+  "newly_evaluated_retained_rows": 48620,
+  "selection_sha256": "321f40d4da48b1ce04c12225fac3b213fe71c3ee8b020cc8cc67a10a7edb80c2",
+  "gnn_checkpoint_sha256": "a23bf986ffaa53d6003dd6648f98141b697438c790c9bb8ebc60adab50ec2e97",
+  "forest_checkpoint_sha256": "1e6c9d9c0f041ce8aa491f1f7ba6cec0e527b40c887ec66e7ee4d7fe23b0a00b",
+  "gnn": {
+    "mae_percentage_points": 23.63740054992619,
+    "rmse_percentage_points": 25.84845790118656,
+    "r2": -17.50998093373639,
+    "rows": 50668
+  },
+  "selected_forest": {
+    "mae_percentage_points": 29.85678896546807,
+    "rmse_percentage_points": 31.02725274591052,
+    "r2": -25.670019990513904,
+    "rows": 50668
+  },
+  "eln_development_median": {
+    "mae_percentage_points": 34.949554987374945,
+    "rmse_percentage_points": 35.350139295837714,
+    "r2": -33.619353490597774,
+    "rows": 50668
+  },
+  "principal_scaffolds": 2,
+  "principal_scaffolds_overlapping_eln": 1,
+  "private_predictions_sha256": "a1805e0d44e9a7e77c094db7975d077dd4fc924afd18bd9938bc8424cc2724d9",
+  "runtime_seconds": 372.303778107,
+  "environment": {
+    "torch": "2.11.0+cpu",
+    "device": "cpu",
+    "threads": 2
+  },
+  "public_example_replay": {
+    "predicted_yield_percent": 28.50843071937561,
+    "host_reference_percent": 28.50843071937561,
+    "absolute_delta_pp": 0.0
+  }
+}

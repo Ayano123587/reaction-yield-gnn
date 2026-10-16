@@ -1,0 +1,23 @@
+{
+  "hypothesis": "Development-only baselineOOF predictions occupy mean31.66\u201338.65pp across targetquartile bins; mean atom pooling can omit absolute molecular size and functional-group counts. Add a learned input-only chemical-summary branch; use matched wider-head control to distinguish capacity from added representation.",
+  "evidence_source": "data/interim/seed-ensemble-cloud/development-diagnostic.json;610ELNdevelopmentrows; noELNtest/HTEoutcomes used to define candidates.",
+  "candidates": [
+    {
+      "name": "capacity_control",
+      "include_descriptors": false
+    },
+    {
+      "name": "graph_chemical_descriptors",
+      "include_descriptors": true
+    }
+  ],
+  "descriptors": "Perrole component means of16RDKitchemicalproperties pluscomponentcount:68features total. Molecules/rolesonly; no products,yields,IDs,notes,procedures,source metadata.",
+  "normalization": "Mean/populationstandarddeviation fit ONLY eachfoldtraininggraphs; constantcolumns scale1; storedbuffers; no test/validation fitting or clipping.",
+  "fixed_architecture": "Retained48hidden/3GINE/rolepool; EXACT matched262->128ReLU->64ReLU->1sigmoid head. Capacitycontrol has68zero input slots; chemicalbranch has68training-normalized descriptors. Identical learned parameter counts, seedinitialization and no dropout.",
+  "fixed_training": "OriginalAdamWlr.003,weightdecay.0001,MSE,batch24,clip5,max120,min20,patience20;seed42+fold;CPU2threads.",
+  "cohort": "All610developmentrows from completevalid740ELNsource; identical3principal-scaffold folds. NoELNtest orHTErecords supplied totraining.",
+  "comparator": "Frozen original42+fold baseline; if precedingequal3seedensemblepassesitsregisteredgate, thatensemblebecomeschampion. No otherposthocensembles orweights.",
+  "adoption": "Candidate must improve mean3foldMAE by>=0.5pp and win>=2folds versuseligiblechampion. Lowestmeaneligiblecandidate wins; tiesprefercapacitycontrol. Otherwise retainchampion. Reportallfolds andmatchedcontrol; noHTE-based choices.",
+  "release": "Serialize validation selection before optional finalrefit. If a candidate passes, refit all610development rows seed42 for median selected-fold bestepoch count; save safe checkpoint and replay public illustrative input. NoELNtest/HTE records exist in this training job.",
+  "compute": "SixCPUvalidationfits plus one finalrefit only ifgatepasses. Twoepoch realdevelopment smoke forbothvariants/checkpointreplay beforefullfits; noGPU/paidcompute."
+}

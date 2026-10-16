@@ -1,0 +1,25 @@
+{
+  "hypothesis": "The retained GNN has fold-specific early stopping at56,4,47 epochs; averaging independently trained seeds may reduce variance without adding test information.",
+  "source": "Complete valid740-row ELN cohort; all610development rows participate in same3principal-scaffold folds;130observedtest rows excluded from fitting/selection and cloudpayload.",
+  "baseline": "Frozen legacy_role48 fold models and predictions from quantity-v2, seeds42+fold, mean validation MAE23.566776075518305.",
+  "seeds": [
+    7,
+    101
+  ],
+  "ensemble_members": [
+    "Frozen42+fold baseline",
+    "New7+fold",
+    "New101+fold"
+  ],
+  "weights": [
+    0.3333333333333333,
+    0.3333333333333333,
+    0.3333333333333333
+  ],
+  "training": "Same48hidden/3GINE/rolepool/MSE/AdamWlr.003/weightdecay.0001/batch24/clip5;max120/min20/patience20;seed+fold.",
+  "selection": "Only equal3member ensemble eligible; must improve mean3foldMAE>=0.5pp and win>=2folds against frozen42 baseline; otherwise retain baseline. Individual new seeds reported, never chosen individually.",
+  "evaluation": "No HTE data/labels or ELNheldout in trainingjob. Allpreviousholdout outcomes observed; no newscoreuntilselection frozen. No HTE-based search or ensembleweight tuning.",
+  "implementation": "Reuse production quantity_study.fit_graph, legacy_graph and YieldGNN; private source files readable, no encoded bootstrap.",
+  "compute": "Six new CPU fits; same scientific early-stop conditions. Free private KaggleCPU ifslotavailable; no GPU or paid service.",
+  "artifact_policy": "Allfoldweights/rowpredictions/cloudinput privateignored; aggregatehistories/configs/metrics/hashes only tracked."
+}

@@ -1,0 +1,23 @@
+{
+  "plan_sha256": "0d2b9d8e2c2ac4831cfb96f23616f996e79c4a018fcb7eef9d9e0d60013741bd",
+  "model_policy_change": false,
+  "scorer_or_eligibility_change": false,
+  "prefix": {
+    "sha256": "ab23d9483f7bd1ce0079e8a5294a7c6234ea2ff7104cc73cbd5aad772bb10db4",
+    "rows": 30020,
+    "bytes": 3965850,
+    "captured_source_bytes": 3965850,
+    "partial_tail_bytes_excluded": 0
+  },
+  "transition": "Preserve complete host prediction prefix; cloud reparses source eligibility/targets/order then infers only remainder. Host suffix after snapshot is ignored, never scored twice.",
+  "prospective_guards": [
+    "Exact source/model/selection/feature hashes",
+    "Complete immutable JSONL prefix",
+    "Unique source-order identifiers and exact targets",
+    "Recompute prefix exclusion/scaffold/accounting without model inference",
+    "All source rows accounted; no cap",
+    "Public-example checkpoint replay tolerance0.001pp across frameworks"
+  ],
+  "tests": "11 focused resume/ensemble tests passed before transition; 43 full source tests passed before resume implementation.",
+  "cloud": "Private free CPU, no GPU; stop host only after cloud resume accepted and ready. If host finishes first, retain its completed full result and do not migrate."
+}

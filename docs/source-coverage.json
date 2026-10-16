@@ -1,0 +1,36 @@
+{
+  "ELN": {
+    "dataset_id": "ord_dataset-00005539a1e04c809a9a78647bea649c",
+    "official_name": "750 AstraZeneca ELN dataset",
+    "official_metadata_url": "https://open-reaction-database.org/dataset/ord_dataset-00005539a1e04c809a9a78647bea649c",
+    "source_rows": 750,
+    "retained_rows": 740,
+    "excluded": {
+      "ambiguous_or_invalid_desired_product_percentage_yield": 6,
+      "nonfinite_temperature": 4
+    },
+    "arbitrary_sampling_cap": false,
+    "scope": "Complete named public ELN dataset, not every dataset in the heterogeneous ORD collection.",
+    "development_rows": 610,
+    "observed_test_rows": 130
+  },
+  "HTE": {
+    "dataset_id": "ord_dataset-805ad863feef48579d95d86a728035f4",
+    "source_rows": 50688,
+    "source_sha256": "31b7c4762145e5dad973050373cd967bdd85caf3a9858767c83a17fed6c4af36",
+    "historical_sample_rows": 2048,
+    "historical_sampling_cap_arbitrary": true,
+    "full_source_protocol": "docs/full-hte-plan.json",
+    "protocol_commit": "3f2a0e7",
+    "model_frozen": true,
+    "training_or_tuning_on_HTE": false,
+    "exposure": "Includes the previously observed 2048 source identifiers. Full result is not an entirely fresh blind test.",
+    "scope": "Complete named HTE dataset, narrow two-substrate-pair chemistry; quality and ELN-clone exclusions counted explicitly.",
+    "retained_rows": 50668,
+    "excluded": {
+      "Need one unambiguous desired-product percentage yield in [0,100]": 20
+    },
+    "previously_observed_retained_rows": 2048,
+    "newly_evaluated_retained_rows": 48620
+  }
+}

@@ -1,10 +1,7 @@
-# Experiment ledger
+# Validation selection
 
-| Round | Preregistered commit | Fits | Scientific wall time | Outcome |
-|---|---|---:|---:|---|
-| Quantity/component pooling | 28fa125 | 12 GNN +27 forest | 925.56s | Small Huber gain fails 0.5 pp/two-fold gate |
-| Morgan1024 fingerprints | 81fb38f | 12 forest | 212.32s | Best gain 0.112 pp; gate fails |
-| Robust graph loss | 6d390cf | 9 GNN | 485.11s | All worse than matched MSE baseline |
-| Final release | Freeze 15cf75a | One47-epoch refit +forest | See execution attestation | Observed ELN once; independent HTE once; no subsequent tuning |
+The selected role-aware GINE configuration uses all 610 ELN development records in three scaffold-grouped folds. Mean MAE is 23.5668 points. Candidate adoption requires at least 0.5-point mean improvement and two fold wins; the gate remained fixed. Quantities, alternative pooling/losses, fingerprint forests, equal seed averaging and matched chemical descriptors did not replace the selected model. No HTE score selected model parameters.
 
-No scientific numerical failures occurred. Source and processed-data hashes, configs, fold metrics and aggregate training histories remain in `docs/quantity-v2`, `docs/morgan-v3` and `docs/loss-v4`. The fresh-venv RDKit Application Control import failure is an environment failure, not a discarded model result. The first source/real-data smoke checkpoint and production inference route were validated before training. Forest production routing guards were added after the first study; they do not change its executed scores. All runners are readable Python. Raw reactions, row predictions and checkpoint binaries remain ignored.
+The descriptor check used six actual CPU fits, a parameter-matched control, fold-training-only descriptor scaling, finite-gradient checks and exact candidate checkpoint reloads. It took 549.88 seconds. Its source was frozen at `fa251f7`; the aggregate SHA256 is `e2664a6a912a3641f4e30710a0b56d421576567d999c2a25bb72c2f62be454a7`. Compact selection evidence is in [selection-check.json](selection-check.json). Detailed candidate histories stay in private run archives.
+
+Full HTE evaluation processes the complete 50,688-row source with frozen ELN-trained models and unchanged quality rules. It is evaluation, not training or model selection. Source coverage and current aggregate results are linked from the report. Previously observed test exposure is a current limitation.

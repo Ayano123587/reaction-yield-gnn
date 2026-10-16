@@ -1,14 +1,18 @@
-"""Run development-only experiments; never score the ELN holdout."""
+"""Train the selected model on development inputs; never score the ELN holdout."""
 import argparse
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--study', choices=['quantity', 'morgan', 'loss'], default='quantity')
+    parser.add_argument('--study', choices=['selected', 'quantity', 'morgan', 'loss'], default='selected')
     parser.add_argument('--data', default='data/processed/reactions-quantity-v2.json')
     parser.add_argument('--source', help='Frozen preceding selection directory for followup studies')
-    parser.add_argument('--output', required=True, help='New empty aggregate report directory')
+    parser.add_argument('--output', required=True, help='Fresh checkpoint/training directory (or development study report directory)')
     args = parser.parse_args()
-    if args.study == 'quantity':
+    if args.study == 'selected':
+        if args.source: parser.error('--source applies only to development studies')
+        from reaction_gnn.selected import train
+        train(args.data, args.output)
+    elif args.study == 'quantity':
         if args.source:
             parser.error('--source applies only to followup studies')
         from reaction_gnn.quantity_study import study

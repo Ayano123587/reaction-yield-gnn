@@ -6,8 +6,8 @@ data:
 	reaction-gnn prepare
 	python -c "from reaction_gnn.quantities import prepare_quantitative; prepare_quantitative('data/external/az.parquet','data/processed/reactions-quantity-v2.json')"
 
-# Change RUN_DIR for each new validation study; completed runs are never replaced.
-RUN_DIR ?= docs/manual-run
+# Use a fresh directory for each selected-model reproduction.
+RUN_DIR ?= models/manual-run
 train:
 	python train.py --output "$(RUN_DIR)"
 test:

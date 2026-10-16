@@ -1,0 +1,24 @@
+{
+  "scope": "Full named ORD HTE source, frozen retained ELN GNN/forest; no training, tuning, model selection or adaptation.",
+  "source_rows_expected": 50688,
+  "source_sha256": "31b7c4762145e5dad973050373cd967bdd85caf3a9858767c83a17fed6c4af36",
+  "selection_directory": "docs/loss-v4",
+  "processed_eln_sha256": "111883fb23471799211848402f88abde643d688586ed295e7f468061dbdae766",
+  "gnn_checkpoint_sha256": "a23bf986ffaa53d6003dd6648f98141b697438c790c9bb8ebc60adab50ec2e97",
+  "forest_checkpoint_sha256": "1e6c9d9c0f041ce8aa491f1f7ba6cec0e527b40c887ec66e7ee4d7fe23b0a00b",
+  "eligibility": "Every source row; original quantitative input parser and unambiguous desired-product percentage yield [0,100]; reject exact structural/temperature ELN clones. Count every rejection, no sampling cap.",
+  "metrics": [
+    "MAE percentage points",
+    "RMSE percentage points",
+    "R2 against full retained-cohort mean"
+  ],
+  "comparators": [
+    "Frozen selected forest",
+    "Frozen ELN-development yield median"
+  ],
+  "batch_rows": 128,
+  "threads": 2,
+  "test_exposure": "Full cohort includes previously observed lowest-SHA256 2048 source identifiers. Remaining records are newly evaluated, but no fully blind independent test claim. Old subset scores remain historical.",
+  "outputs": "Fresh aggregate docs/full-hte/results.json; per-reaction predictions only ignored data/interim/full-hte/predictions.jsonl. No raw reactions or weights committed.",
+  "failure_policy": "Fail on changed hashes, unexpected source count, duplicate identifiers, nonfinite predictions or existing outputs. Preserve failures and do not change policies in response to scores."
+}

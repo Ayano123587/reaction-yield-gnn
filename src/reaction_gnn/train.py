@@ -78,6 +78,11 @@ def train(path,checkpoint,report,epochs=30,seed=42,hidden=48,*,acknowledge_obser
 
 def load_model(path):
     checkpoint=torch.load(path,map_location="cpu",weights_only=True)
+    kind=checkpoint.get("model_kind")
+    if kind is not None:
+        if kind!="descriptor_gnn":raise ValueError("Unsupported checkpoint model kind")
+        from .descriptor_study import from_checkpoint
+        return from_checkpoint(checkpoint)
     version=checkpoint["feature_version"]
     if version==1:
         model=YieldGNN(checkpoint["hidden"],checkpoint.get("layers",3),checkpoint.get("pooling","global"),checkpoint.get("dropout",0.))
@@ -90,7 +95,10 @@ def load_model(path):
 
 def predict_record(model,record):
     from torch_geometric.data import Batch
-    if getattr(model,'feature_version',1)==2:
+    if getattr(model,'feature_version',1)==3:
+        from .descriptor_model import reaction_graph as descriptor_graph
+        batch=Batch.from_data_list([descriptor_graph(record,model.include_descriptors)])
+    elif getattr(model,'feature_version',1)==2:
         from .quantity_graph import reaction_graph as quantity_graph
         batch=Batch.from_data_list([quantity_graph(record)],follow_batch=['component_roles'])
     else:batch=Batch.from_data_list([reaction_graph(record)])

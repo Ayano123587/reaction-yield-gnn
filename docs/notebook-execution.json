@@ -12,26 +12,26 @@
     },
     {
       "path": "notebooks/02_main_graph_model_and_training.ipynb",
-      "sha256": "b7b4e65a4da200c109e92a135a2b3004985c3618db4d9f125b8672b9a752bd4c",
-      "code_cells": 12,
-      "code_lines": 270,
-      "embedded_pngs": 2,
+      "sha256": "d9da090f41690baa396ec64b05521c396a8124c6fc21aef95215c4755f65bd71",
+      "code_cells": 10,
+      "code_lines": 177,
+      "embedded_pngs": 1,
       "executed": true,
-      "executed_file_sha256": "3bb0378a202f3434ea7c6e5425ed40bee09e7886365be64b73ce5deafbdf1f61"
+      "executed_file_sha256": "dff2ccb7cf9409d3d0e82988ca51bede9e59c90d6bab2df667418af3c257f302"
     },
     {
       "path": "notebooks/03_evaluation_and_domain_transfer.ipynb",
-      "sha256": "58af893ceac03b45279a8adbd88390e82e2698ec58259ca2d2febb3f9835f815",
+      "sha256": "d759d19918a2f0063a93484827a136ade559aea10fd3a9efc6a83fb798b20405",
       "code_cells": 5,
-      "code_lines": 62,
+      "code_lines": 60,
       "embedded_pngs": 2,
       "executed": true,
-      "executed_file_sha256": "4f0c47308e06ea946663e6ed978be3bfe544ca2246a568bf2e274b59c51772a0"
+      "executed_file_sha256": "5ff6c140ec90545c77b0655242cb5306ed9034db2c9fcd37aa28c50a47d5fab6"
     },
     {
       "path": "notebooks/04_checkpoint_deployment_and_transfer_limits.ipynb",
-      "sha256": "874862c7d6d1969deac6a06eb22d60cbff7081c491cfee1f645578ad70df4531",
-      "executed_file_sha256": "991b7576a1df7c06363796c61a720e45e5cbb2008f16d1ff750cd45773f87350",
+      "sha256": "e5dd0b3ece58cf706513599b4141b27abaf14a0f9a6835705c606357595492c8",
+      "executed_file_sha256": "af5d67246be88eeee3d3818944b2744e4104d2e257dd3547eef5dd0111776df4",
       "code_cells": 6,
       "code_lines": 125,
       "embedded_pngs": 2,
@@ -53,7 +53,7 @@
     },
     {
       "path": "docs/figures/reaction_independent_transfer_errors.png",
-      "sha256": "1d8de4d6036ff162ab73e58abd286ef75baec5925705d437058e6a111b0f6b98",
+      "sha256": "aa36825d8d93da07aaff58e305440c002bbac5172a3c24d0cbe87751b7d8e285",
       "width": 1385,
       "height": 543
     },
@@ -77,7 +77,7 @@
     },
     {
       "path": "docs/figures/reaction_transfer_variance_diagnostic.png",
-      "sha256": "780b150bb929215cf34aaea104a8a93a54f8bcc084ef07703def4ec7bd38647a",
+      "sha256": "f21b68178eb512a000e0856988ecdf38c4d11bacedde465df2ff528bb95446dd",
       "width": 1500,
       "height": 570
     }
