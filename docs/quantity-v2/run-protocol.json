@@ -1,0 +1,8 @@
+{
+  "plan_sha256": "3775bab7ecb642664a7ca1f3a6c206abc91030ee872892e8d0f38657b870ecdc",
+  "processed_sha256": "111883fb23471799211848402f88abde643d688586ed295e7f468061dbdae766",
+  "implementation_sha256": "63566415c6c7ce3c025850636dd8d1531a2603aeb930328089e509deba08dcce",
+  "fold_assignment_sha256": "87dad1a2891db86cf5fc8b482635e9c905cd39deeb123d9244f043d678c002aa",
+  "development_rows": 610,
+  "test_evaluated": false
+}

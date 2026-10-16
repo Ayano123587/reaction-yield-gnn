@@ -83,3 +83,24 @@ def test_morgan_role_permutation_target_invariance():
     assert first.shape==(4112,) and np.isfinite(first).all()
     changed=copy.deepcopy(record);changed["components"].reverse();changed["yield_percent"]=100
     np.testing.assert_array_equal(first,representation(changed))
+
+
+def test_loss_gate_distinguishes_legacy_representation_candidates():
+    from reaction_gnn.loss_study import select_loss
+    baseline={"config":{"feature_version":1,"loss":"mse"},"mean_validation_mae":25.,"fold_validation_mae":[25.,25.,25.]}
+    candidate={"config":{"feature_version":1,"loss":"huber"},"mean_validation_mae":24.4,"fold_validation_mae":[24.4]*3}
+    assert select_loss(baseline,[candidate]) is candidate
+    candidate["mean_validation_mae"]=24.6
+    assert select_loss(baseline,[candidate]) is baseline
+
+
+def test_morgan_forest_production_checkpoint_routing(tmp_path):
+    import joblib
+    from reaction_gnn.quantity_study import fit_forest,forest_predictions
+    record=extract_quantitative_inputs(example());record["yield_percent"]=20.
+    second=copy.deepcopy(record);second["temperature_c"]=80.;second["yield_percent"]=70.
+    config={"kind":"forest","feature_version":2,"fingerprint":"morgan1024","trees":4,"leaf":1}
+    model=fit_forest([record,second],config)
+    assert model.n_features_in_==4112
+    path=tmp_path/"forest.joblib";joblib.dump(model,path)
+    np.testing.assert_array_equal(forest_predictions(model,[record,second],config),forest_predictions(joblib.load(path),[record,second],config))

@@ -1,0 +1,68 @@
+{
+  "scientific_freeze_commit": "15cf75a",
+  "executed_source_commits": {
+    "quantity": "9cf085a",
+    "morgan": "81dfd40",
+    "loss": "392ea55",
+    "final_release_production": "16eaaa1"
+  },
+  "guards_added_after_first_study": "Production forest routing/save-load support; unchanged graph fitting and scores. Original scientific implementation hashes remain in reports.",
+  "current_source_sha256": {
+    "__init__.py": "4598b6d5225853ea8a315f184219ad4b23ecb81130f94320954d74b1b4dcda13",
+    "artifacts.py": "df82c6079c5215c35a1fc70764429fdbb14e957fdd8f66b78aa290eb8abc69ac",
+    "cli.py": "8a596ddb5fc6e06f2de0ef9fbdf87fce9e9c7aebc381578beeacb1ac2caa16ea",
+    "data.py": "e57faec4e18bcf4ebcd032f962b3c8c12aab6574ff3c9d1399e7f5e0aa948d44",
+    "graph.py": "a435e84c1e6ba1d86d077133d89abb64d5b3bd79131d221391f03f189e568af4",
+    "loss_study.py": "7be2a42e3d25f353da10fea5825e2553437d1d2edb354aa0f35bc67e55fa7047",
+    "model.py": "b08de1ef91832bbad7f268c25425e4650acacae7b2646107848c1146092090de",
+    "morgan.py": "12d63bf0a0ca1e35fbd31e231415c5d9689efc6dc6b9640f8048477e3c5435d6",
+    "optimize.py": "47aef3a7db6404f818df3906fd31fb1887c44cbeccb2a8a8b1caf9cfbbebe030",
+    "quantities.py": "524f79d40b34b65671f980d8c9c82b64f752a8d938b54fc883b54bf057eaf884",
+    "quantity_graph.py": "623114639c944efe3b5aa47ef2bee6a047b5d39bfbed665e3bda9498e6a53eed",
+    "quantity_model.py": "274de3a04b352936d85e4ddd621fc40ca6546c44282f9d802d6c65bb6c76aec8",
+    "quantity_study.py": "45d96b68b3016bbe7a08379b989184c0a7c35c341141b5b32ce105f2a0202eed",
+    "quantity_transfer.py": "28d3f0b75afb954718c491ec498bc6a25c84777ff6489b0078c7bd7c0f51e580",
+    "train.py": "312db8f6a295efe30816bfa397eb402a62ecbb7911b5314d7fad856649fb6d46",
+    "transfer.py": "7083127b2ddb3ceb8c7192fc16e043ddd5a0c8689444530b596c4bd08ac99ece"
+  },
+  "private_log_sha256": {
+    "quantity-study.log": "665c50bce84db573feb32d82f1740cc2d68b4ae81a3e6efbffd692e2676e6bd3",
+    "morgan-study.log": "3c3738942d27e4e12985e83ade9e5096695393f9deb6ffb122194a2c380b1c0f",
+    "loss-study.log": "4eefacaf122f25e50cb226887267bc3af0609f342833be57693d9963094ae423",
+    "eln-evaluation.log": "5404e0bce96433a0f703daa6dc1c98c6df9a94def4828d50f61949d40fba8019",
+    "hte-evaluation.log": "06b9b16f1518ebdaabe8648deffdb245641e2b43913843d1b9bfaa98e5b73d98",
+    "final-tests.log": "dfb3c67d8062cf4c5b44bc3afe0e08a1c6e486e0a7598d07907d1c327eba2252",
+    "final-cli-predict.log": "bb1527464b2992ffc6aee7f07e8bc82d0ef52295708900b55a29fbf619838429",
+    "postrun-guard-tests-v2.log": "394ddefb36de61669a0fb0b40e12ed3bffc3a4a9159cf4fe73102b6e8c36149a",
+    "postrun-guard-tests-final.log": "a6df7c35a05878e2a04580243e594350ffa69757558ec7fdf36a249b62c7b407",
+    "final-cli-predict-guarded.log": "bb1527464b2992ffc6aee7f07e8bc82d0ef52295708900b55a29fbf619838429"
+  },
+  "checkpoint_sha256": "a23bf986ffaa53d6003dd6648f98141b697438c790c9bb8ebc60adab50ec2e97",
+  "actual_cli": {
+    "command": "python -m reaction_gnn.cli predict models/loss-v4/selected.pt data/interim/public-inference-example.json",
+    "scope": "Hand-written public example; inference mechanics only",
+    "finite_bounded": true,
+    "exit_code": 0
+  },
+  "tests": {
+    "passed": 40,
+    "command": "python -c \"import torch,pytest;torch.set_num_threads(2);raise SystemExit(pytest.main([\"-q\"]))\"",
+    "focused_guard_tests_passed": 16
+  },
+  "scientific_wall_seconds": {
+    "quantity": 925.5551836999948,
+    "morgan": 212.32397729999502,
+    "loss": 485.10649830001057
+  },
+  "final_release_timing": "Not separately instrumented; no duration invented.",
+  "private_data_and_checkpoints": "Retained locally and ignored; no row predictions, raw reactions or weights committed.",
+  "current_source_manifest_sha256": "1b6a42581f1497070d71e0fa1f11d2ede57f04d24688c05284aef7f9a31e3c15",
+  "current_source_sha256_basis": "Actual working-tree host bytes, retained separately from scientific executed commit IDs; Git can normalize physical line endings on publication.",
+  "post_scientific_run_guards": "After all scientific runs: legacy train/optimize/transfer evaluation requires explicit observed-cohort acknowledgement and fresh outputs. Exclusive creation protects reports/checkpoints from overwrite. Mocked CLI/API negative tests and public-example checkpoint inference passed; no scientific training or test scoring was repeated.",
+  "hte_provenance_amendment": {
+    "scope": "Primary paper specifies two substrate pairs; interpretation wording corrected only. All original metrics, source and sampling fields verified unchanged.",
+    "original_report_sha256": "1de531c1a6598c9717a40379d26386448b986e9db7529e0c55b008effb95178f",
+    "amended_report_sha256": "9bda43cbb3a46670410e187cea3488d19d10f0a85e0c6f77ac240534eb1864a0",
+    "original_report_archive": "Ignored data/interim/loss-v4/HTE-transfer-results-original.json"
+  }
+}

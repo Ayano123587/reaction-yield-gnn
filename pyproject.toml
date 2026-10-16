@@ -8,6 +8,7 @@ description = "Input-only graph regression on source-traceable ORD reaction yiel
 requires-python = ">=3.11"
 dependencies = ["torch>=2.6,<3", "torch-geometric>=2.6,<3", "rdkit>=2025.3", "ord-schema==0.9.3", "pyarrow>=18", "numpy>=2,<3", "scikit-learn>=1.7,<2"]
 [project.optional-dependencies]
+notebooks = ["jupyter>=1,<2", "matplotlib>=3.8,<4", "pandas>=2.2,<4"]
 dev = ["pytest>=8,<10"]
 [project.scripts]
 reaction-gnn = "reaction_gnn.cli:main"

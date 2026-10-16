@@ -82,18 +82,25 @@ def partitions(dataset):
 def augmented_fingerprint(record):return np.concatenate([fingerprint(record)[:-2],quantitative_conditions(record)[0]])
 
 
+def forest_features(records,config):
+    if config.get('fingerprint')=='morgan1024':
+        from .morgan import representation
+        return np.stack([representation(r) for r in records])
+    return np.stack([(fingerprint(r) if config['feature_version']==1 else augmented_fingerprint(r)) for r in records])
+
+
 def forest_configurations():
     return [{'name':f'{kind}_{version}_leaf{leaf}','kind':kind,'feature_version':version,'leaf':leaf,'trees':200 if version==1 else 400} for kind,version in [('forest',1),('forest',2),('extra',2)] for leaf in [1,3,8]]
 
 
 def fit_forest(records,config):
-    x=np.stack([(fingerprint(r) if config['feature_version']==1 else augmented_fingerprint(r)) for r in records]);y=np.asarray([r['yield_percent'] for r in records])
+    x=forest_features(records,config);y=np.asarray([r['yield_percent'] for r in records])
     cls=RandomForestRegressor if config['kind']=='forest' else ExtraTreesRegressor
     return cls(n_estimators=config['trees'],min_samples_leaf=config['leaf'],random_state=42,n_jobs=2).fit(x,y)
 
 
 def forest_predictions(model,records,config):
-    return model.predict(np.stack([(fingerprint(r) if config['feature_version']==1 else augmented_fingerprint(r)) for r in records]))
+    return model.predict(forest_features(records,config))
 
 
 def select_gnn(trials):

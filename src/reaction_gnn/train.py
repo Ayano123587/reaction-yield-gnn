@@ -31,7 +31,9 @@ def fingerprint(record):
     temp=record.get("temperature_c");values[-2:]=[temp/100 if temp is not None else 0.,float(temp is None)]
     return values
 
-def train(path,checkpoint,report,epochs=30,seed=42,hidden=48):
+def train(path,checkpoint,report,epochs=30,seed=42,hidden=48,*,acknowledge_observed=False):
+    from .artifacts import observed_outputs,train_outputs,write_text_new,save_torch_new
+    observed_outputs(acknowledge_observed,'ELN',train_outputs(report,checkpoint))
     if epochs<1: raise ValueError("epochs must be positive")
     from sklearn.ensemble import RandomForestRegressor
     torch.set_num_threads(2);torch.manual_seed(seed);np.random.seed(seed)
@@ -63,15 +65,15 @@ def train(path,checkpoint,report,epochs=30,seed=42,hidden=48):
     forest.fit(np.stack([fingerprint(r) for r in splits["train"]]),targets["train"])
     forest_prediction=forest.predict(np.stack([fingerprint(r) for r in splits["test"]]))
     checkpoint=Path(checkpoint);checkpoint.parent.mkdir(parents=True,exist_ok=True)
-    torch.save({"state_dict":best,"hidden":hidden,"feature_version":1,"dataset_id":dataset["dataset_id"]},checkpoint)
+    save_torch_new({"state_dict":best,"hidden":hidden,"feature_version":1,"dataset_id":dataset["dataset_id"]},checkpoint)
     try:
         revision=subprocess.check_output(["git","rev-parse","HEAD"],text=True,stderr=subprocess.DEVNULL).strip()
         dirty=bool(subprocess.check_output(["git","status","--porcelain"],text=True).strip())
     except subprocess.CalledProcessError: revision=None;dirty=None
     result={"dataset_id":dataset["dataset_id"],"processed_sha256":hashlib.sha256(raw).hexdigest(),"seed":seed,"epochs":epochs,"best_epoch_selected_on_validation":best_epoch,"feature_contract":dataset["feature_contract"],"split_rule":"largest-reactant Murcko scaffold; acyclic fallback canonical SMILES; group-heldout 70/15/15 by group count", "splits":{s:{"rows":len(rows),"scaffold_groups":len({r["group"] for r in rows}),"yield_mean":float(targets[s].mean()),"yield_std":float(targets[s].std())} for s,rows in splits.items()},"test_gnn":metrics(targets["test"],test_prediction),"test_training_median":metrics(targets["test"],np.full(len(targets["test"]),median)),"test_role_fingerprint_random_forest":metrics(targets["test"],forest_prediction),"history":history,"environment":{"python":platform.python_version(),"torch":torch.__version__,"device":"cpu","threads":2},"code_revision":revision,"code_dirty_at_run":dirty,"runtime_seconds":time.perf_counter()-started,"limitations":["Single 750-row ELN source; no independent laboratory or prospective validation.","Grouping protects largest-reactant scaffolds only; smaller reactants/reagents may overlap.","No product structures, notes, analytical outcomes, yield measurements or outcome reaction time enter model features.","Input quantities and detailed procedures are omitted; conditions include only temperature setpoint.","A measured model is not necessarily better than tabular or constant baselines."]}
-    destination=Path(report);destination.parent.mkdir(parents=True,exist_ok=True);destination.write_text(json.dumps(result,indent=2,allow_nan=False)+"\n",encoding="utf-8")
+    destination=Path(report);destination.parent.mkdir(parents=True,exist_ok=True);write_text_new(destination,json.dumps(result,indent=2,allow_nan=False)+"\n")
     split_ids={s:[{"reaction_id":r["reaction_id"],"group_sha256":hashlib.sha256(r["group"].encode()).hexdigest()} for r in rows] for s,rows in splits.items()}
-    destination.with_name(destination.stem+"-split-ids.json").write_text(json.dumps(split_ids,indent=2)+"\n",encoding="utf-8")
+    write_text_new(destination.with_name(destination.stem+"-split-ids.json"),json.dumps(split_ids,indent=2)+"\n")
     print(json.dumps({k:v for k,v in result.items() if k!="history"},indent=2));return result
 
 def load_model(path):

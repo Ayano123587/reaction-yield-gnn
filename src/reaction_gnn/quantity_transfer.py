@@ -82,7 +82,7 @@ def evaluate(path, selection_directory, data='data/processed/reactions-quantity-
         'principal_scaffolds_overlapping_eln': len({r['group'] for r in records} &
                                                    {r['group'] for r in dataset['records']}),
         'interpretation': 'Independent-source assay-yield transfer, without tuning or adaptation. '
-                          'Narrow two-amine/four-aryl-halide chemistry; scaffold overlap is allowed '
+                          'Narrow chemistry comprising two documented substrate pairs; scaffold overlap is allowed '
                           'and reported. Assay yield differs from ELN measurements. No broad '
                           'chemistry generalization or calibrated uncertainty claim.'}
     write(destination, result)

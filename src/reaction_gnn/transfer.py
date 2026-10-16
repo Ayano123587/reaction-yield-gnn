@@ -23,7 +23,9 @@ def fetch_transfer(path):
     path=Path(path);path.parent.mkdir(parents=True,exist_ok=True);path.write_bytes(content)
     return {"dataset_id":TRANSFER_ID,"sha256":TRANSFER_SHA,"bytes":len(content),"url":url,"license":"CC-BY-SA-4.0"}
 
-def evaluate_transfer(path,checkpoint,development,report,limit=2048,selection_report="docs/optimized-results.json"):
+def evaluate_transfer(path,checkpoint,development,report,limit=2048,selection_report="docs/optimized-results.json",*,acknowledge_observed=False):
+    from .artifacts import observed_outputs,write_text_new
+    observed_outputs(acknowledge_observed,'HTE',[report])
     if limit<1:raise ValueError("limit must be positive")
     torch.set_num_threads(2)
     content=Path(path).read_bytes()
@@ -53,6 +55,6 @@ def evaluate_transfer(path,checkpoint,development,report,limit=2048,selection_re
     forest.fit(np.stack([fingerprint(r) for r in development_rows]),[r["yield_percent"] for r in development_rows])
     forest_metrics=metrics(target,forest.predict(np.stack([fingerprint(r) for r in records])))
     groups={r["group"] for r in records};training_groups={r["group"] for r in training}
-    result={"dataset_id":TRANSFER_ID,"sha256":TRANSFER_SHA,"selection":"lowest SHA256(reaction_id), no target-based sampling","candidate_rows":len(items),"retained_rows":len(records),"dropped":dict(dropped),"test_gnn":score,"test_role_fingerprint_random_forest":forest_metrics,"test_eln_median":metrics(target,np.full(len(target),median)),"target_mean":float(target.mean()),"target_std":float(target.std()),"distinct_principal_scaffolds":len(groups),"principal_scaffolds_overlapping_eln":len(groups&training_groups),"exact_input_clones_overlapping_eln":0,"interpretation":"Separate-source assay-yield transfer only; substrate scaffolds may overlap and this narrow2amine4aryl dataset is not a broad chemistry benchmark. No tuning or adaptation uses this cohort."}
-    destination=Path(report);destination.parent.mkdir(parents=True,exist_ok=True);destination.write_text(json.dumps(result,indent=2,allow_nan=False)+"\n",encoding="utf-8")
+    result={"dataset_id":TRANSFER_ID,"sha256":TRANSFER_SHA,"selection":"lowest SHA256(reaction_id), no target-based sampling","candidate_rows":len(items),"retained_rows":len(records),"dropped":dict(dropped),"test_gnn":score,"test_role_fingerprint_random_forest":forest_metrics,"test_eln_median":metrics(target,np.full(len(target),median)),"target_mean":float(target.mean()),"target_std":float(target.std()),"distinct_principal_scaffolds":len(groups),"principal_scaffolds_overlapping_eln":len(groups&training_groups),"exact_input_clones_overlapping_eln":0,"interpretation":"Separate-source assay-yield transfer only; substrate scaffolds may overlap and this two-substrate-pair dataset is not a broad chemistry benchmark. No tuning or adaptation uses this cohort."}
+    destination=Path(report);destination.parent.mkdir(parents=True,exist_ok=True);write_text_new(destination,json.dumps(result,indent=2,allow_nan=False)+"\n")
     print(json.dumps(result,indent=2));return result

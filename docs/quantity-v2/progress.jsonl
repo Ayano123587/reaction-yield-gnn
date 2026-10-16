@@ -1,0 +1,12 @@
+{"config": "legacy_role48", "fold": 0, "validation_mae": 23.589200843012694, "best_epoch": 56, "executed_epochs": 76}
+{"config": "legacy_role48", "fold": 1, "validation_mae": 24.182208220497902, "best_epoch": 4, "executed_epochs": 24}
+{"config": "legacy_role48", "fold": 2, "validation_mae": 22.928919163044327, "best_epoch": 47, "executed_epochs": 67}
+{"config": "quantity_atom_role48", "fold": 0, "validation_mae": 23.961621804219305, "best_epoch": 29, "executed_epochs": 49}
+{"config": "quantity_atom_role48", "fold": 1, "validation_mae": 24.72877112056027, "best_epoch": 4, "executed_epochs": 24}
+{"config": "quantity_atom_role48", "fold": 2, "validation_mae": 22.925897065763433, "best_epoch": 50, "executed_epochs": 70}
+{"config": "quantity_component_role48", "fold": 0, "validation_mae": 23.819895881143484, "best_epoch": 19, "executed_epochs": 39}
+{"config": "quantity_component_role48", "fold": 1, "validation_mae": 24.073581301865456, "best_epoch": 4, "executed_epochs": 24}
+{"config": "quantity_component_role48", "fold": 2, "validation_mae": 22.861540146336157, "best_epoch": 51, "executed_epochs": 71}
+{"config": "quantity_component_huber48", "fold": 0, "validation_mae": 23.418933285005163, "best_epoch": 26, "executed_epochs": 46}
+{"config": "quantity_component_huber48", "fold": 1, "validation_mae": 23.514512606027747, "best_epoch": 1, "executed_epochs": 21}
+{"config": "quantity_component_huber48", "fold": 2, "validation_mae": 23.09268665838872, "best_epoch": 41, "executed_epochs": 61}

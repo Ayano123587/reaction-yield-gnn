@@ -1,0 +1,32 @@
+{
+  "study": "robust-graph-loss-v4",
+  "hypothesis": "Quantity component Huber beta .1 reduced validation MAE modestly but failed the .5 pp gate; amounts themselves and larger fingerprints showed no clear large gain. Isolate alignment with the MAE objective on legacy graphs and a sharper Huber approximation on component quantity graphs.",
+  "candidates": [
+    {
+      "name": "legacy_huber01",
+      "feature_version": 1,
+      "pooling": "role",
+      "loss": "huber",
+      "beta": 0.1
+    },
+    {
+      "name": "legacy_huber001",
+      "feature_version": 1,
+      "pooling": "role",
+      "loss": "huber",
+      "beta": 0.01
+    },
+    {
+      "name": "component_huber001",
+      "feature_version": 2,
+      "pooling": "component_role",
+      "loss": "huber",
+      "beta": 0.01
+    }
+  ],
+  "training": "Same committed quantity-plan fixed training, same seed42+fold, same three frozen scaffold folds, no additional parameter search.",
+  "baseline": "Original matched legacy MSE GNN, mean CV MAE23.5667760755; existing quantity candidates remain preserved.",
+  "adoption": ">=0.5 percentage-point lower mean MAE plus >=2/3 matched fold wins versus baseline; lowest eligible mean wins, otherwise baseline remains.",
+  "prerequisite": "Morgan followup frozen; ELN and HTE still unscored.",
+  "bounds": "Final three-candidate loss-only round before release; no test-guided revision of gate or configurations."
+}

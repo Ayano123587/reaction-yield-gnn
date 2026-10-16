@@ -1,0 +1,67 @@
+{
+  "scope": "Executed real-input EDA and recorded aggregate analysis; no new test scoring or full training from notebook viewing. Optional acquisition/training flags remained false.",
+  "notebooks": [
+    {
+      "path": "notebooks/01_real_ord_inputs_and_eda.ipynb",
+      "sha256": "cbcada2c8b8dc304da7257af200e2e989f367c7effaa24716b17cd411e47c36d",
+      "code_cells": 5,
+      "code_lines": 60,
+      "embedded_pngs": 1,
+      "executed": true,
+      "executed_file_sha256": "9989546834c6a21586aaa8a5e4e499df5c933b2a4ebdc3a504ab65360b08e57e"
+    },
+    {
+      "path": "notebooks/02_main_graph_model_and_training.ipynb",
+      "sha256": "b7b4e65a4da200c109e92a135a2b3004985c3618db4d9f125b8672b9a752bd4c",
+      "code_cells": 12,
+      "code_lines": 270,
+      "embedded_pngs": 2,
+      "executed": true,
+      "executed_file_sha256": "3bb0378a202f3434ea7c6e5425ed40bee09e7886365be64b73ce5deafbdf1f61"
+    },
+    {
+      "path": "notebooks/03_evaluation_and_domain_transfer.ipynb",
+      "sha256": "58af893ceac03b45279a8adbd88390e82e2698ec58259ca2d2febb3f9835f815",
+      "code_cells": 5,
+      "code_lines": 62,
+      "embedded_pngs": 2,
+      "executed": true,
+      "executed_file_sha256": "4f0c47308e06ea946663e6ed978be3bfe544ca2246a568bf2e274b59c51772a0"
+    }
+  ],
+  "figures": [
+    {
+      "path": "docs/figures/reaction_actual_training_curves.png",
+      "sha256": "464de9eafda77d5a9c070d2ed7f9b14f0a16ca765cf1bb08da92c058dbcc33ab",
+      "width": 1665,
+      "height": 543
+    },
+    {
+      "path": "docs/figures/reaction_gnn_fold_comparison.png",
+      "sha256": "1006dcc8939772459ae98dea080804a964be3efb74e8b49a48873036e2575338",
+      "width": 1657,
+      "height": 544
+    },
+    {
+      "path": "docs/figures/reaction_independent_transfer_errors.png",
+      "sha256": "1d8de4d6036ff162ab73e58abd286ef75baec5925705d437058e6a111b0f6b98",
+      "width": 1385,
+      "height": 543
+    },
+    {
+      "path": "docs/figures/reaction_observed_eln_errors.png",
+      "sha256": "f58446114e881ca4e187a167a5628cba44ef7a6247089c846ac9159ca458600f",
+      "width": 1385,
+      "height": 543
+    },
+    {
+      "path": "docs/figures/reaction_real_eln_distributions.png",
+      "sha256": "5efdd24cfcf6ee5d0648650b6951b026643a28c4c39ee68460df6a6e9edfef2a",
+      "width": 1805,
+      "height": 543
+    }
+  ],
+  "schema_and_plain_python_compilation": "passed",
+  "output_errors": 0,
+  "sha256_basis": "sha256 uses UTF-8 file bytes with physical CRLF normalized to LF, matching Git publication. executed_file_sha256 preserves the actual host artifact bytes."
+}

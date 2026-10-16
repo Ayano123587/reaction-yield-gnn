@@ -1,0 +1,40 @@
+{
+  "dataset_id": "ord_dataset-805ad863feef48579d95d86a728035f4",
+  "source_sha256": "31b7c4762145e5dad973050373cd967bdd85caf3a9858767c83a17fed6c4af36",
+  "selection_sha256": "321f40d4da48b1ce04c12225fac3b213fe71c3ee8b020cc8cc67a10a7edb80c2",
+  "gnn_checkpoint_sha256": "a23bf986ffaa53d6003dd6648f98141b697438c790c9bb8ebc60adab50ec2e97",
+  "forest_checkpoint_sha256": "1e6c9d9c0f041ce8aa491f1f7ba6cec0e527b40c887ec66e7ee4d7fe23b0a00b",
+  "sampling": "Lowest SHA256(reaction_id), 2048 identifiers selected before labels",
+  "candidate_rows": 2048,
+  "retained_rows": 2048,
+  "dropped": {},
+  "gnn": {
+    "mae_percentage_points": 23.591075056800037,
+    "rmse_percentage_points": 25.808107574005092,
+    "r2": -18.1445313221204,
+    "rows": 2048
+  },
+  "selected_forest": {
+    "mae_percentage_points": 29.885382627441896,
+    "rmse_percentage_points": 31.06378890281796,
+    "r2": -26.735836643192478,
+    "rows": 2048
+  },
+  "eln_development_median": {
+    "mae_percentage_points": 34.945738077614806,
+    "rmse_percentage_points": 35.36361083664526,
+    "r2": -34.94559059851031,
+    "rows": 2048
+  },
+  "principal_scaffolds": 2,
+  "principal_scaffolds_overlapping_eln": 1,
+  "interpretation": "Independent-source assay-yield transfer, without tuning or adaptation. Narrow chemistry comprising two documented substrate pairs; scaffold overlap is allowed and reported. Assay yield differs from ELN measurements. No broad chemistry generalization or calibrated uncertainty claim.",
+  "provenance_amendment": {
+    "original_report_sha256": "1de531c1a6598c9717a40379d26386448b986e9db7529e0c55b008effb95178f",
+    "original_interpretation": "Independent-source assay-yield transfer, without tuning or adaptation. Narrow two-amine/four-aryl-halide chemistry; scaffold overlap is allowed and reported. Assay yield differs from ELN measurements. No broad chemistry generalization or calibrated uncertainty claim.",
+    "reason": "The primary publication describes two substrate pairs; replace the earlier loose substrate-count wording. Scores, sampling, source data and checkpoints are unchanged.",
+    "source": "https://pubs.acs.org/doi/10.1021/jacs.6c05959",
+    "original_report_sha256_basis": "Original host output bytes, archived under ignored data/interim/loss-v4; Git publication normalizes physical line endings.",
+    "original_git_report_sha256": "f99ab93a4c2702303745d10410fe1c8fddf893c92d03101595fb0f4fe2a93f91"
+  }
+}

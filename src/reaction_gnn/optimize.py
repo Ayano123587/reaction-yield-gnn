@@ -50,7 +50,9 @@ def fit(graphs,validation,config,epochs,seed,patience=10):
     if validation:model.load_state_dict(state)
     return model,best_epoch if validation else epochs,history
 
-def optimize(path,output="docs/optimized-results.json",checkpoint="models/optimized.pt",epochs=60,folds=3):
+def optimize(path,output="docs/optimized-results.json",checkpoint="models/optimized.pt",epochs=60,folds=3,*,acknowledge_observed=False):
+    from .artifacts import observed_outputs,optimize_outputs,write_text_new,save_torch_new
+    observed_outputs(acknowledge_observed,'ELN',optimize_outputs(output,checkpoint))
     if epochs<1 or folds<2:raise ValueError("positive epochs and >=2 folds required")
     torch.set_num_threads(2);np.random.seed(42);started=time.perf_counter()
     raw=Path(path).read_bytes();dataset=json.loads(raw);splits=split_records(dataset["records"],42)
@@ -62,7 +64,8 @@ def optimize(path,output="docs/optimized-results.json",checkpoint="models/optimi
     fingerprints={r["reaction_id"]:fingerprint(r) for r in dataset["records"]}
     destination=Path(output);destination.parent.mkdir(parents=True,exist_ok=True)
     lock={"processed_sha256":hashlib.sha256(raw).hexdigest(),"test_ids":[r["reaction_id"] for r in splits["test"]],"configs":CONFIGS,"max_epochs":epochs,"folds":folds,"seed":42,"test_policy":"No final-test predictions during model/config selection. An earlier2epoch exploratory smoke did report aggregate test metrics; this historical exposure is disclosed."}
-    destination.with_name("selection-protocol.json").write_text(json.dumps(lock,indent=2)+"\n",encoding="utf-8")
+    write_text_new(destination.with_name("selection-protocol.json"),json.dumps(lock,indent=2)+"\n")
+    write_text_new(destination.with_name("selection-progress.jsonl"),"")
     try:revision=subprocess.check_output(["git","rev-parse","HEAD"],text=True).strip()
     except subprocess.CalledProcessError:revision=None
     trials=[]
@@ -97,7 +100,7 @@ def optimize(path,output="docs/optimized-results.json",checkpoint="models/optimi
     model,_,history=fit([graph_cache[r["reaction_id"]] for r in development],None,selected["config"],final_epochs,42)
     path=Path(checkpoint);path.parent.mkdir(parents=True,exist_ok=True)
     config=selected["config"]
-    torch.save({"state_dict":model.state_dict(),"hidden":config["hidden"],"layers":config["layers"],"pooling":config["pooling"],"dropout":config["dropout"],"feature_version":1,"dataset_id":dataset["dataset_id"]},path)
+    save_torch_new({"state_dict":model.state_dict(),"hidden":config["hidden"],"layers":config["layers"],"pooling":config["pooling"],"dropout":config["dropout"],"feature_version":1,"dataset_id":dataset["dataset_id"]},path)
     # The held-out test is first used for predictions only after all selection/refitting.
     y=np.array([r["yield_percent"] for r in splits["test"]]);gnn=predictions(model,[graph_cache[r["reaction_id"]] for r in splits["test"]])
     forest=RandomForestRegressor(n_estimators=200,min_samples_leaf=forest_config["min_samples_leaf"],random_state=42,n_jobs=2)
@@ -105,6 +108,6 @@ def optimize(path,output="docs/optimized-results.json",checkpoint="models/optimi
     forest_pred=forest.predict(np.stack([fingerprints[r["reaction_id"]] for r in splits["test"]]))
     median=float(np.median([r["yield_percent"] for r in development]))
     result={"dataset_id":dataset["dataset_id"],"processed_sha256":lock["processed_sha256"],"code_revision":revision,"seed":42,"protocol":lock["test_policy"],"selection":"3fold principal-substrate-scaffold-disjoint validation; fixed final test; refit all development rows with median validation best epoch", "split_integrity":integrity,"development_rows":len(development),"final_test_rows":len(y),"gnn_trials":trials,"forest_trials":forest_trials,"selected_gnn":config,"selected_forest":forest_config,"final_refit_epochs":final_epochs,"final_refit_history":history,"test_gnn":metrics(y,gnn),"test_training_median":metrics(y,np.full(len(y),median)),"test_role_fingerprint_random_forest":metrics(y,forest_pred),"runtime_seconds":time.perf_counter()-started,"environment":{"python":platform.python_version(),"torch":torch.__version__,"device":"cpu","threads":2},"limitations":["Earlier exploratory smoke already exposed an aggregate on this test; final selection used validation only, but a genuinely untouched external source evaluation is still needed.","740 usable ELN reactions from one source; this is not a universal reaction predictor.","Largest-reactant scaffolds and exact input clones are disjoint; smaller substrates and reagents can overlap.","Mean3fold validation is noisy and no best-achievable-global-score claim is made."]}
-    destination.write_text(json.dumps(result,indent=2,allow_nan=False)+"\n",encoding="utf-8")
+    write_text_new(destination,json.dumps(result,indent=2,allow_nan=False)+"\n")
     print(json.dumps({k:result[k] for k in ["selected_gnn","final_refit_epochs","test_gnn","test_training_median","test_role_fingerprint_random_forest","runtime_seconds"]},indent=2),flush=True)
     return result

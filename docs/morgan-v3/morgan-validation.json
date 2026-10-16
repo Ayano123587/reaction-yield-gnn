@@ -1,0 +1,96 @@
+{
+  "plan_sha256": "372edef5f12bdb8de28c9162abda6c6de58c65c2cc864d80fe1de3a5da44bdcb",
+  "implementation_sha256": "12d63bf0a0ca1e35fbd31e231415c5d9689efc6dc6b9640f8048477e3c5435d6",
+  "baseline": {
+    "config": {
+      "name": "forest_1_leaf8",
+      "kind": "forest",
+      "feature_version": 1,
+      "leaf": 8,
+      "trees": 200
+    },
+    "fold_validation_mae": [
+      24.771633997494796,
+      26.342378151607512,
+      23.867981178754516
+    ],
+    "mean_validation_mae": 24.993997775952277
+  },
+  "trials": [
+    {
+      "config": {
+        "kind": "forest",
+        "leaf": 3,
+        "trees": 400,
+        "feature_version": 2,
+        "fingerprint": "morgan1024",
+        "name": "forest_morgan1024_leaf3"
+      },
+      "fold_validation_mae": [
+        24.70949692023134,
+        26.877875806415435,
+        23.553943017678908
+      ],
+      "mean_validation_mae": 25.04710524810856
+    },
+    {
+      "config": {
+        "kind": "forest",
+        "leaf": 8,
+        "trees": 400,
+        "feature_version": 2,
+        "fingerprint": "morgan1024",
+        "name": "forest_morgan1024_leaf8"
+      },
+      "fold_validation_mae": [
+        24.63583117831719,
+        26.34677905426327,
+        23.664055628389924
+      ],
+      "mean_validation_mae": 24.882221953656796
+    },
+    {
+      "config": {
+        "kind": "extra",
+        "leaf": 3,
+        "trees": 400,
+        "feature_version": 2,
+        "fingerprint": "morgan1024",
+        "name": "extra_morgan1024_leaf3"
+      },
+      "fold_validation_mae": [
+        27.608156814012315,
+        31.08673753839996,
+        28.14615058313293
+      ],
+      "mean_validation_mae": 28.947014978515067
+    },
+    {
+      "config": {
+        "kind": "extra",
+        "leaf": 8,
+        "trees": 400,
+        "feature_version": 2,
+        "fingerprint": "morgan1024",
+        "name": "extra_morgan1024_leaf8"
+      },
+      "fold_validation_mae": [
+        27.00578696340765,
+        30.008866054615183,
+        25.647195705579502
+      ],
+      "mean_validation_mae": 27.553949574534112
+    }
+  ],
+  "failures": [],
+  "selected_forest": {
+    "name": "forest_1_leaf8",
+    "kind": "forest",
+    "feature_version": 1,
+    "leaf": 8,
+    "trees": 200
+  },
+  "runtime_seconds": 212.32397729999502,
+  "development_rows": 610,
+  "test_evaluated": false
+}
